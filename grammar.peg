@@ -1,0 +1,18 @@
+expression =
+          name
+        / function
+        / application
+
+application = "(" head:expression ")" tail:expression
+        { return ["apply", head, tail]; }
+
+function = "#" args:name "." expr:expression
+        { return ["lambda", args, expr]; }
+
+name = all:validchars+
+        { return all;}
+
+validchars = [a-zA-Z]
+
+ws = [ \t\n]*
+
