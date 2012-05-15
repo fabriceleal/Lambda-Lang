@@ -1,0 +1,56 @@
+<html>
+<head>
+<script src="jquery-1.7.min.js"></script>
+<script src="get_data.js"></script>
+<script>
+
+var LAMBDA = {};
+
+getData('parser.js', function(compiled){
+	LAMBDA.parse = compiled;
+});
+
+</script>
+<script src="interpreter.js"></script>
+</head>
+<body>
+<script>
+var Logger = {};
+Logger.write = (function(){
+	var execs = 0;
+	return function(msg){
+		execs++;
+		$('#result').append('[#'+execs+']' + msg);
+		$('#result').append('<br/ >');
+	};
+})();
+
+$(function(){
+	$('#run').click(function(){
+		
+		try{
+			var parsed = LAMBDA.parse($('#code').val());
+			Logger.write('Parsed: ' + JSON.stringify(parsed));
+			try{
+				var res = evalExpr(parsed, undefined);
+				Logger.write('Result: ' + JSON.stringify(res));
+			}catch(e){
+				Logger.write('Error on eval: ' + e);
+			}
+		}catch(e){
+			Logger.write('Error on parse: ' + e);
+		}
+	});
+});
+</script>
+The foundations for this language are in <a href="http://www.utdallas.edu/~gupta/courses/apl/lambda.pdf">this paper</a><br/ >
+Syntax:<br/ >
+Function: '#'Args'.'Expression<br/ >
+Expression: Var-Name / Function / Application<br/ >
+Application: '('Function')'Args-Values<br/ >
+Var-Name: a single char<br/ >
+<textarea id="code" style="height: 300px; width: 400px;"></textarea>
+<input id="run" type="submit" value="Run!" />
+<div id="result"></div>
+</body>
+</html>
