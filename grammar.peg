@@ -10,7 +10,7 @@ function = "#" args:name "." expr:expression
         { return ["lambda", args, expr]; }
 
 name = all:validchars+
-        { return all;}
+        { return all; }
 
 validchars = [a-zA-Z]
 
