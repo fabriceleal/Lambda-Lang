@@ -27,6 +27,10 @@ Logger.write = (function(){
 	};
 })();
 
+Logger.reset = function(){
+	$('#result').empty();
+};
+
 $(function(){
 	getData('tests.index.json', 
 			function(compiled){
@@ -66,6 +70,9 @@ $(function(){
 			Logger.write('Error on parse: ' + e);
 		}
 	});
+	
+	$('#clean').click(Logger.reset);
+
 });
 </script>
 <div style="float: left;">
@@ -85,7 +92,7 @@ Var-Name: a single char<br/ >
 	Try it!:
 		<div id="tests"></div>
 	Log:
-		<div id="result"></div>
+		<div><div id="result"></div><a id="clean">Clean Logs!</a></div>
 	</div>
 </div>
 </body>
