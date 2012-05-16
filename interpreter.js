@@ -29,26 +29,25 @@ var evalExpr = function(expr, env){
 
 	if(! expr instanceof Array)
 		throw 'Ups! Expr is not an array ...';
-	
-	console.log(expr[0]);
+
 	switch(expr[0]){
-		case "lambda":
+		case "#":
 			// Return a Javascript function object
-			return function(argLst){
+			return function(arg){
 				var new_env = {
 					bindings : {},
 					outer: env
 				};
 				
-				expr[1].forEach(function(item, idx){
-					addBinding(item, argLst[idx], new_env);
-				});
+				//expr[1].forEach(function(item, idx){
+				//});
+				addBinding(expr[1], arg, new_env);				
 
-				return evalExpr(expr[2][0], new_env); 
-			};
-		case "apply":
-			return evalExpr(expr[1], env)(expr[2]);
+				return evalExpr(expr[2], new_env); 
+			};			
 	}
+
+	return evalExpr(expr[0], env)(expr[1]);
 
 	throw 'Ups! Looks like the interpreter is missing something :P ... failed with expr = ' + JSON.stringify(expr);
 };

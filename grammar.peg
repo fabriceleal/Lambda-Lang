@@ -1,18 +1,16 @@
-expression =
-          name
-        / function
-        / application
+expression = application / name / function
 
-application = "(" head:expression ")" tail:expression
-        { return ["apply", head, tail]; }
+ws_expression = ws e:expression
+{ return e; }
 
-function = "#" args:name "." expr:expression
-        { return ["lambda", args, expr]; }
+function = '#' a:name '.' e:expression
+{ return ["#", a, e]; }
 
-name = all:validchars+
-        { return all; }
+application = "(" f:expression " " e1:expression ")"
+{ return [ f, e1]; }
 
-validchars = [a-zA-Z]
+name=validchar
 
-ws = [ \t\n]*
+validchar=[a-zA-Z]
 
+ws=[ \t\n]
