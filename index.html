@@ -31,18 +31,19 @@ $(function(){
 	getData('tests.index.json', 
 			function(compiled){
 					compiled.forEach(function(item, idx){
-		
-						getData(item, function(newTest){
-								var a = document.createElement('a');
+						var a = document.createElement('a');
+
+						getData(item, function(newTest){								
 								a.href = '#';
 								tests[idx] = newTest.code;
 								a.onclick = function(){
 									$('#code').val(tests[idx]);
 								};
-								a.innerHTML = newTest.description;
-								$('#tests')[0].appendChild(a);
-								$('#tests')[0].appendChild(document.createElement('br'));
+								a.innerHTML = newTest.description;								
 						});
+
+						$('#tests')[0].appendChild(a);
+						$('#tests')[0].appendChild(document.createElement('br'));
 
 					});
 			});
