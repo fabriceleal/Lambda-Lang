@@ -139,7 +139,7 @@ var evalExprForce = function(expr, env){
 				
 				addBinding(expr[1], arg, new_env);		
 
-				console.log(new_env);		
+				//console.log(new_env);		
 
 				return evalExpr(expr[2], new_env); 
 			};	

@@ -1,0 +1,4 @@
+{
+	"description" : "The Successor function",
+	"code" : "#w.#y.#x.(y ((w y) x))"
+}

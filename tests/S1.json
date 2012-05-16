@@ -1,0 +1,4 @@
+{
+	"description" :"The Successor function, applied to the number 1",
+	"code" : "(#w.#y.#x.(y ((w y) x)) #s.#z.(s z))"
+}
