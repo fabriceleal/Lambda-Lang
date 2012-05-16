@@ -1,3 +1,6 @@
+/*
+ * Looks for the variable v through the environment env
+ */
 var lookup = function(v, env){
 
 	if(env === undefined)
@@ -9,11 +12,16 @@ var lookup = function(v, env){
 	return lookup(v, env.outer)
 };
 
-
+/*
+ * Adds a new variable to the local env
+ */
 var addBinding = function(name, value, env){
 	env.bindings[name] = value;
 };
 
+/*
+ * My implementation of deepEqual
+ */
 var deepEqual = function(a, b){
 	if(typeof a !== typeof b)
 		return false;
@@ -92,13 +100,17 @@ var evalExpr = function(expr, env){
 	// Lambda
 	switch(expr[0]){
 		case "#":
-			// Return the expr itself. Expr should only be "compiled" into a function in an application
+			// Return the expr itself, reducing the body if possible. 
+			// Expr should only be "compiled" into a function in an application
 			return [expr[0], expr[1], evalExpr(expr[2], env)];
 	}
 
-	// *Try* to reduce the body ;)
+	/* 
+		*Try* to reduce the body ;)
+		Application, if possible. If not, eval recursively the body until its fully reduced, 
+		ie, the input of evalExpr is equal to its output 
+	*/
 
-	// Application, if possible
 	var funIsIt = evalExprForce(expr[0], env);
 
 	if(typeof funIsIt === 'function'){
@@ -137,9 +149,7 @@ var evalExprForce = function(expr, env){
 					outer: env
 				};
 				
-				addBinding(expr[1], arg, new_env);		
-
-				console.log(new_env);		
+				addBinding(expr[1], arg, new_env);
 
 				return evalExpr(expr[2], new_env); 
 			};	
