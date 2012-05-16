@@ -32,6 +32,7 @@ var evalExpr = function(expr, env){
 
 	switch(expr[0]){
 		case "#":
+			// TODO Create a nice representation, so you can see it in the console
 			// Return a Javascript function object
 			return function(arg){
 				var new_env = {
@@ -47,7 +48,7 @@ var evalExpr = function(expr, env){
 			};			
 	}
 
-	return evalExpr(expr[0], env)(expr[1]);
+	return (evalExpr(expr[0], env))( expr[1] );
 
 	throw 'Ups! Looks like the interpreter is missing something :P ... failed with expr = ' + JSON.stringify(expr);
 };
