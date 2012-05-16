@@ -47,7 +47,7 @@ var evalExpr = function(expr, env){
 			};			
 	}
 
-	return evalExpr(expr[0], env)(expr[1]);
+	return (evalExpr(expr[0], env))( expr[1] );
 
 	throw 'Ups! Looks like the interpreter is missing something :P ... failed with expr = ' + JSON.stringify(expr);
 };
