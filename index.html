@@ -10,6 +10,8 @@ getData('parser.js', function(compiled){
 	LAMBDA.parse = compiled;
 });
 
+var tests = [];
+
 </script>
 <script src="interpreter.js"></script>
 </head>
@@ -26,6 +28,26 @@ Logger.write = (function(){
 })();
 
 $(function(){
+	getData('tests.index.json', 
+			function(compiled){
+					compiled.forEach(function(item, idx){
+		
+						getData(item, function(newTest){
+								var a = document.createElement('a');
+								a.href = '#';
+								tests[idx] = newTest.code;
+								a.onclick = function(){
+									$('#code').val(tests[idx]);
+								};
+								a.innerHTML = newTest.description;
+								$('#tests')[0].appendChild(a);
+								$('#tests')[0].appendChild(document.createElement('br'));
+						});
+
+					});
+			});
+	//---
+
 	$('#run').click(function(){
 		
 		try{
@@ -45,14 +67,25 @@ $(function(){
 	});
 });
 </script>
+<div style="float: left;">
+<h1>Fabrice Leal's Lambda-Lang</h1>
+Sorry for the broken html!<br/>
 The foundations for this language are in <a href="http://www.utdallas.edu/~gupta/courses/apl/lambda.pdf">this paper</a><br/ >
 Syntax:<br/ >
 Function: '#'Argument'.'Expression<br/ >
 Expression: Var-Name / Function / Application<br/ >
 Application: '('Function Parameter')'<br/ >
 Var-Name: a single char<br/ >
-<textarea id="code" style="height: 300px; width: 400px;"></textarea>
-<input id="run" type="submit" value="Run!" />
-<div id="result"></div>
+	<textarea id="code" style="height: 300px; width: 400px;"></textarea>
+	<input id="run" type="submit" value="Run!" />
+</div>
+<div style="float: right;">
+	<div>
+	Try it!:
+		<div id="tests"></div>
+	Log:
+		<div id="result"></div>
+	</div>
+</div>
 </body>
 </html>
