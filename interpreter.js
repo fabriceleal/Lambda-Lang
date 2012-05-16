@@ -33,15 +33,15 @@ var evalExpr = function(expr, env){
 	switch(expr[0]){
 		case "#":
 			// Return a Javascript function object
-			return function(argLst){
+			return function(arg){
 				var new_env = {
 					bindings : {},
 					outer: env
 				};
 				
-				expr[1].forEach(function(item, idx){
-					addBinding(item, argLst[idx], new_env);
-				});
+				//expr[1].forEach(function(item, idx){
+				//});
+				addBinding(expr[1], arg, new_env);				
 
 				return evalExpr(expr[2], new_env); 
 			};			
