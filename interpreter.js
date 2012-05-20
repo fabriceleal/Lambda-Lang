@@ -163,14 +163,13 @@ var exprToString = function(expr){
 	if(expr === undefined)
 		return "";
 
-	if(!(expr instanceof Array)){
-		// This is either a string or a number
+	if(typeof expr === 'string' || typeof expr === 'number'){
 		return expr.toString();
 	}
 
 	if(expr[0] === "#"){
 		// This is a function
-		return "#" + exprToString(expr[1]) + exprToString(expr[2]);
+		return "#" + exprToString(expr[1]) + "." + exprToString(expr[2]);
 	}
 
 	// This is an application
