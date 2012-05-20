@@ -60,8 +60,8 @@ $(function(){
 			Logger.write('Parsed: ' + JSON.stringify(parsed));
 			try{
 				var res = evalExpr(parsed, undefined);
-				Logger.write('Result: ' + 
-						(typeof res === 'function' ? res.toString() : JSON.stringify(res))
+				Logger.write('Result: ' + exprToString(res)
+						//(typeof res === 'function' ? res.toString() : JSON.stringify(res))
 				);
 			}catch(e){
 				Logger.write('Error on eval: ' + e);

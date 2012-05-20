@@ -1,1 +1,4 @@
-(#x.(x x) #y.(y y))
+{
+	"description":"Omega (this should break the interpreter, its infinite! :P)",
+	"code" : "(#x.(x x) #y.(y y))"
+}
