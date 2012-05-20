@@ -158,3 +158,22 @@ var evalExprForce = function(expr, env){
 	return evalExpr(expr, env);
 };
 
+
+var exprToString = function(expr){
+	if(expr === undefined)
+		return "";
+
+	if(!(expr instanceof Array)){
+		// This is either a string or a number
+		return expr.toString();
+	}
+
+	if(expr[0] === "#"){
+		// This is a function
+		return "#" + exprToString(expr[1]) + exprToString(expr[2]);
+	}
+
+	// This is an application
+	return "(" + exprToString(expr[0]) + " " + exprToString(expr[1]) + ")";
+}
+
