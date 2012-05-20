@@ -1,0 +1,4 @@
+{
+	"description" : "tuple (a, b)",
+	"code" : "#z.((z a) b)"
+}

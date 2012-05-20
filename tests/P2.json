@@ -1,0 +1,4 @@
+{
+	"description" : "Predecessor(2)",
+	"code" : "(#n.(((n #p.#z.((z (#w.#y.#x.(y ((w y) x)) (p #a.#b.a))) (p #c.#d.c))) #z.((z #o.#p.p) #o.#p.p)) #i.#j.j) #h.#g.(h (h g)))"
+}

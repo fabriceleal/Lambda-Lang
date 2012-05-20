@@ -1,0 +1,4 @@
+{
+	"description" : "Field 1 of (a, b) (lit., '(a, b) T')",
+	"code" : "(#z.((z a) b) #x.#y.x)"
+}
