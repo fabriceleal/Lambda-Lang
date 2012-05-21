@@ -1,0 +1,4 @@
+{
+	"description":"zero?",
+	"code" : "#x.(((x #a.#b.b) #w.((w #u.#v.v) #g.#h.g)) #r.#s.s)"
+}

@@ -1,1 +1,4 @@
-["I.json", "II.json", "S.json", "S0.json", "S1.json", "2S3.json", "omega.json"]
+["I.json", "II.json", "S.json", "S0.json", "S1.json", "2S3.json", "2x2.json", "true.json", "false.json", 
+"negation.json", "negTRUE.json", "and.json", "or.json", "zerop.json", "zerop_2.json", "zerop_0.json",
+"tuple.json", "tuple_field1.json", "tuple_field2.json", "phi.json", "P.json", "P0.json", "P2.json",
+"omega.json"]

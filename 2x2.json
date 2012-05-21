@@ -1,0 +1,4 @@
+{
+	"description":"2*2 (lit. '* 2 2')",
+	"code" : "((#x.#y.#z.(x (y z)) #a.#b.(a (a b))) #a.#b.(a (a b)))"
+}

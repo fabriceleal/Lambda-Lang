@@ -1,0 +1,4 @@
+{
+	"description":"negation(true) => false",
+	"code":"(#x.((x #u.#v.v) #a.#b.a) #a.#b.a)"
+}

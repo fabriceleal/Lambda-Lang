@@ -1,0 +1,4 @@
+{
+	"description" :"Generates from the arg (n, n-1) the result: (n+1, n-1)",
+	"code":"#p.#z.((z (#w.#y.#x.(y ((w y) x)) (p #a.#b.a))) (p #c.#d.c))"
+}
